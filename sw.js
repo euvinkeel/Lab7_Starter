@@ -5,11 +5,11 @@ const CACHE_NAME = 'lab-7-starter';
 
 const urlsToCache = [
   // '/',
-  '/assets/scripts/main.js',
+  'assets/scripts/main.js',
   // '/assets/scripts/Router.js',
   // '/assets/components/RecipeCard.js',
   // '/assets/components/RecipeExpand.js',
-  '/assets/styles/main.css',
+  'assets/styles/main.css',
 ]
 
 // Once the service worker has been installed, feed it some initial URLs to cache
@@ -24,7 +24,10 @@ self.addEventListener('install', function (event) {
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Opened cache');
       return cache.addAll(urlsToCache);
-    })
+    }).catch((err) => {
+      console.log("SOMEONE DECIDED TO NOT DO THEIR JOB TODAY");
+      console.log(err);
+    }
   )  
 });
 
