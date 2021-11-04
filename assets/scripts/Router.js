@@ -72,7 +72,8 @@ export class Router {
     const hash = page == 'home' ? '' : `#${page}`;
     if (!statePopped && window.location.hash != hash) {
       const url = new URL(window.location);
-      history.pushState({'page': page}, '', url + hash);
+      url.hash = hash;
+      history.pushState({'page': page}, '', url);
     }
     foundFunction();
   }
