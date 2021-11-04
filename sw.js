@@ -19,6 +19,7 @@ self.addEventListener('install', function (event) {
    * Create a function as outlined above
    */
   // cache name was already defined above
+  console.log('SW: Install');
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Opened cache');
@@ -38,6 +39,7 @@ self.addEventListener('activate', function (event) {
    * Create a function as outlined above, it should be one line
    */
   // Make it so clients loaded in the same scope don't have to be reloaded before their fetches go through this service worker, the function is below:
+  console.log('SW: Activate');
   event.waitUntil(clients.claim());
 });
 
@@ -47,8 +49,8 @@ self.addEventListener('fetch', function (event) {
    * TODO - Part 2 Step 4
    * Create a function as outlined above
    */
+  console.log('SW: Fetch');
   event.respondWith(caches.match(event.request).then((response) => {
-
     
     // if we got it already let's reuse it
     if (response) return response;
