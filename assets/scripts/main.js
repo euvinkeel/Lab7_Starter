@@ -1,6 +1,6 @@
 // main.js
 
-import { Router } from './router.js';
+import { Router } from './Router.js';
 
 const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
